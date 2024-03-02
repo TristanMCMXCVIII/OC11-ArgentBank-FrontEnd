@@ -1,0 +1,17 @@
+.buttonwrapper {
+    padding: 1rem 0;
+}
+  
+.successmessage {
+    color: #00bc77;
+}
+
+.errormessage {
+    color: red;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
