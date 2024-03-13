@@ -32,7 +32,6 @@ function App() {
                             <User />
                         </PrivateRoute>
                     } />
-                    <Route path="/user" element={<User />}/>
                     <Route path="*" element={<Error />}/> 
                 </Routes>
                 <Footer />
