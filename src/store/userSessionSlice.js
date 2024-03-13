@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { checkLoggedInStatus, loginUser } from "../api/signInApi";
+import { checkLoggedInStatus, thunkLoginUser } from "../api/logInApi";
 
 
-const userSlice = createSlice({
-    name: 'user',
+const userSessionSlice = createSlice({
+    name: 'userSession',
     initialState: {
         loading: false,
         error: null,
         isLoggedIn: checkLoggedInStatus(),
-    },
+    }, 
     reducers: {
         logOut : (state) => {
             state.isLoggedIn = false
@@ -16,23 +16,23 @@ const userSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(loginUser.pending, (state) => {
+            .addCase(thunkLoginUser.pending, (state) => {
                 state.loading = true;
                 state.error = null;
                 state.isLoggedIn = false;
             })
-            .addCase(loginUser.fulfilled, (state) => {
+            .addCase(thunkLoginUser.fulfilled, (state) => {
                 state.loading = false;
                 state.error = null;
                 state.isLoggedIn = true;
             })
-            .addCase(loginUser.rejected, (state) => {
+            .addCase(thunkLoginUser.rejected, (state) => {
                 state.loading = false;
                 state.isLoggedIn = false;
             })
     }
 })
 
-export default userSlice.reducer;
+export default userSessionSlice;
 
-export const {logOut} = userSlice.actions;
+export const {logOut} = userSessionSlice.actions;

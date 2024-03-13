@@ -1,17 +1,17 @@
-import SignInForm from "../../components/SignInForm";
+import LogInForm from "../../components/LogInForm";
 
-import "./SignIn.scss";
+import "./LogIn.scss";
 
-function SignIn(){
+function LogIn(){
     return(
         <main className="main bg-dark sign-in-layout">
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
                 <h1>Sign In</h1>
-                <SignInForm />
+                <LogInForm />
             </section>
         </main>
     );
 };
 
-export default SignIn;
+export default LogIn;

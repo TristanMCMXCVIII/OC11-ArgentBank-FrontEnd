@@ -2,23 +2,27 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 
 
+
+// checkLoggedInStatus()
 export const checkLoggedInStatus = () => {
     return localStorage.getItem('IsLoggedIn') === 'true';
 }
 
-export const loginUser = createAsyncThunk('user.loginUser', async (userCredentials, {rejectWithValue}) => {
+
+// thunkLoginUser
+export const thunkLoginUser = createAsyncThunk('userSession.thunkLoginUser', async (userCredentials, {rejectWithValue}) => { // loginUser -> thunkLoginUser
     try {
         const request = await axios.post(
             "http://localhost:3001/api/v1/user/login",
             userCredentials 
         );
-        console.log("axios answer : request = ", request)
+        console.log("TRISTAN : axios answer : request = ", request)
 
-        const token = request.data.body.token;
+        const tokenRecieved = request.data.body.token;
         const response = request.data.data;
 
         localStorage.setItem('IsLoggedIn', true);
-        localStorage.setItem('token', token)
+        localStorage.setItem('token', tokenRecieved); // JWT token payload with id | Fn2 -> replace strict variable 
 
         return response;
     }

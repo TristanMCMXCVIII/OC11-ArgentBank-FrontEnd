@@ -1,6 +1,9 @@
 import "./Hero.scss";
 
+// cmd p
+
 function Hero(){
+
     return(
         <div className="hero">
             <section className="hero-content">

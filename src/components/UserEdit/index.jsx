@@ -8,10 +8,9 @@ import './UserEdit.scss';
 import { selectUserData } from "../../store/selectors";
 
 import { editUserName } from "../../store/userDataSlice.js";
-import { toggleEdit } from "../../store/editUserSlice.js";
 
 
-export default function UserEdit(){
+export default function UserEdit({closeFunction}){
 
     const [userName, setUserName] = useState('');
     const [editSuccess, setEditSuccess] = useState(false);
@@ -19,11 +18,11 @@ export default function UserEdit(){
 
     const dispatch = useDispatch();
 
-    const userData = useSelector(selectUserData)
+    const userData = useSelector(selectUserData);
     const firstName = userData.firstName;
     const lastName = userData.lastName;
 
-    const token = localStorage.getItem('token');
+    const savedToken = localStorage.getItem('token');
 
     // function editUsername()
     const editUserNameFt = async () => {
@@ -37,7 +36,7 @@ export default function UserEdit(){
                     headers: {
                         accept: 'application/json',
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${savedToken}`
                     }
                 }
             );
@@ -81,7 +80,8 @@ export default function UserEdit(){
     // function handleClick()
     const handleClick = async (e) => {
         e.preventDefault();
-        dispatch(toggleEdit());
+        //dispatch(toggleEdit());
+        closeFunction();
         setUserName("");
     };
     
@@ -116,15 +116,15 @@ export default function UserEdit(){
 
             <form type="submit" onSubmit={handleSubmit} className="form">
                 <div className="editform--input-wrapper">
-                    <label htmlFor="username">Username:</label>
+                    <label htmlFor="username">Username :  </label>
                     <input type="text" id="username" value={userName} onChange={(e) => setUserName(e.target.value)} required />
                 </div>
                 <div className="editform--input-wrapper">
-                    <label htmlFor="firstName">First name:</label>
+                    <label htmlFor="firstName">First name :  </label>
                     <input type="text" id="firstName" value={firstName} disabled />
                 </div>
                 <div className="editform--input-wrapper">
-                    <label htmlFor="lastName">Last name:</label>
+                    <label htmlFor="lastName">Last name :  </label>
                     <input type="text" id="lastName" value={lastName} disabled />
                 </div>
                 <div className="buttonwrapper">

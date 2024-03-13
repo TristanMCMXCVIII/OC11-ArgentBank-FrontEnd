@@ -4,7 +4,7 @@ import "../../utils/main.scss"
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import { selectLogIn } from "../../store/selectors";
+import { selectUserSession } from "../../store/selectors";
 
 import { Navigate } from "react-router-dom";
 
@@ -13,26 +13,29 @@ import Account from "../../components/Account";
 import UserInfos from '../../components/UserInfos';
 
 
+//gerer logout dans fichier de Routing 
+
 function User(){
 
-    const user = useSelector(selectLogIn);
+    const userSession = useSelector(selectUserSession);
   
     const isConnected = () => {
-        if (user.isLoggedIn === true) {
+        if (userSession.isLoggedIn === true) {
             return true;
         }   
-    };
+    }; 
 
     useEffect(() => {
         document.title = "Argent Bank - User Page";
     }, []);
 
     if (!isConnected()) {
-        return <Navigate to="/sign-in" />;
-      }
+        return <Navigate to="/log-in" />;
+    }
+    
 
     return(
-        <main className="main bg-dark">
+        <main className="main bg-dark screen-user">
             <UserInfos/>
             <h2 className="sr-only">Accounts</h2>
             <Account 

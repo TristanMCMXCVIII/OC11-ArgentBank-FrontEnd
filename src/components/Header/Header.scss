@@ -1,37 +1,62 @@
-
-.main-nav {
+.header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
     padding: 5px 20px;
-  }
-  
-  .main-nav a {
-    font-weight: bold;
-    color: #2c3e50;
-  }
-  
-  .main-nav a.router-link-exact-active {
-    color: #42b983;
-  }
-  
-  .main-nav-item {
-    text-decoration: none;
-    margin-right: 0.5rem; 
-    column-gap: 10px;
-  }
-  
-  .main-nav-item:hover {
-    text-decoration: underline;
-  }
-  
-  .main-nav-logo {
+    box-sizing: border-box;
+    
+    color: #242424;
+}
+
+.header__logo {
     display: flex;
     align-items: center;
-  }
+
+    width: auto;
+    max-width: 300px;
+
+    .header__logo-image {
+        max-width: 100%;
+        width: 200px;
+    }
+}
   
-  .main-nav-logo-image {
-    max-width: 100%;
-    width: 200px;
-  }
+ 
+.header__nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+
+    column-gap: 20px;
+
+    .header__nav-item {
+        text-decoration: none;
+        margin-right: 0.5rem; 
+
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+            color : #00bc77;
+        }
+
+        &.active{ // class1.class2{} -> class1 et class2 (=active)
+            color : #00bc77;
+        }
+
+        i {
+            margin-right: 5px;
+        }
+    }
+    .header__nav-item--active {
+        color: #00bc77;
+    }
+}
+
+
+  
+
+
   

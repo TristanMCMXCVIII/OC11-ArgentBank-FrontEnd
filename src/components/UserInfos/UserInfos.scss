@@ -1,5 +1,18 @@
-.userInfos {
+.user-infos {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    row-gap: 10px;
+
     color: #fff;
     margin-bottom: 2rem;
+
+    h1 {
+        font-size: 24px;
+        font-weight: 600;
+    }
 }
   

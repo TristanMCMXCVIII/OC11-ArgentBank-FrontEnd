@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch} from 'react-redux';
 
-import "./SignInForm.scss";
-import { loginUser } from "../../api/signInApi";
+import "./LogInForm.scss";
+import { thunkLoginUser } from "../../api/logInApi";
 
-function SignInForm(){
+function LogInForm(){
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ function SignInForm(){
     const [password, setPassword] = useState('');
 
     //{loading} = utilise la déstructuralisation pour EXTRAIRE la propriété loading de state.user (state.user.loading)
-    const { loading } = useSelector((state) => state.user); // use selector ici pour extraire une partie du state globale (user) //use selector 
+    const { loading } = useSelector((state) => state.userSession); // use selector ici pour extraire une partie du state globale (user) //use selector -> destructure la session pour ne prendre que le loading
 
     const handleLoginEvent = async (e) => {
         e.preventDefault();
@@ -26,9 +26,9 @@ function SignInForm(){
         };
     
         try {
-            const result = await dispatch(loginUser(userCredentials)); // on dispatch une action ({ACTION, PAYLOAD}) ou un thunk(payload) = action asynchrone
+            const result = await dispatch(thunkLoginUser(userCredentials)); // on dispatch une action ({ACTION, PAYLOAD}) ou un thunk(payload) = action asynchrone
         
-            console.log('1-', result);
+            console.log('TRISTAN 1-', result);
             if (result.meta.requestStatus === "fulfilled") {
                 setEmail("");
                 setPassword("");
@@ -62,4 +62,4 @@ function SignInForm(){
     );
 };
 
-export default SignInForm;
+export default LogInForm;

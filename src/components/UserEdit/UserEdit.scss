@@ -8,10 +8,41 @@
 
 .errormessage {
     color: red;
-}
+} 
 
 .form {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+.editform--input-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    label{
+        margin-right: 10px;
+    }
+    input{
+        height: 30px;
+        border-radius: 5px;
+
+        &:disabled{
+            color: white;
+        }
+    }
+}
+
+.buttonwrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    column-gap: 20px;
+
+    button{
+        min-width: 100px;
+        width: auto;
+    }
 }

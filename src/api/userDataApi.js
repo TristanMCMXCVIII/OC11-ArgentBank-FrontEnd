@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const fetchUserInfos = async (isLogin) => {
+export const fetchUserData = async (token) => { // fetchUserInfos -> fetchUserData
     try {
         const response = await axios.post(
             'http://localhost:3001/api/v1/user/profile', 
@@ -8,7 +8,7 @@ export const fetchUserInfos = async (isLogin) => {
             {
                 headers: {
                     Accept: 'application/json',
-                    Authorization: `Bearer ${isLogin}`
+                    Authorization: `Bearer ${token}`
                 }
             }
         );
