@@ -13,10 +13,9 @@ import { selectUserSession } from '../store/selectors';
 
 
 const PrivateRoute = ({ children }) => {
-    const { isLoggedIn } = useSelector(selectUserSession) // Utilisez votre logique de sélection de l'état de connexion
+    const { isLoggedIn } = useSelector(selectUserSession) 
     return isLoggedIn ? children : <Navigate to="/log-in" />;
 };
-
 
 function App() {
     

@@ -21,6 +21,7 @@ export default function UserEdit({closeFunction}){
     const userData = useSelector(selectUserData);
     const firstName = userData.firstName;
     const lastName = userData.lastName;
+    const userNameX = userData.userName;
 
     const savedToken = localStorage.getItem('token');
 
@@ -65,7 +66,7 @@ export default function UserEdit({closeFunction}){
     // function handleSubmit()
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const check = /^[0-9A-Za-z\s-]+$/;
+        const check = /^[0-9A-Za-z\s-]{8,}$/; // 19 MARS : new regex
 
         setEditSuccess(false);
         if (check.test(userName)) {
@@ -117,7 +118,7 @@ export default function UserEdit({closeFunction}){
             <form type="submit" onSubmit={handleSubmit} className="form">
                 <div className="editform--input-wrapper">
                     <label htmlFor="username">Username :  </label>
-                    <input type="text" id="username" value={userName} onChange={(e) => setUserName(e.target.value)} required />
+                    <input type="text" id="username" placeholder={userNameX} onChange={(e) => setUserName(e.target.value)} required />
                 </div>
                 <div className="editform--input-wrapper">
                     <label htmlFor="firstName">First name :  </label>
